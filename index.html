@@ -20,17 +20,52 @@
     <!-- header -->
     <nav class="navbar navbar-light bg-light justify-content-center">
         <span class="navbar-brand mb-2 h1 header-font">Weather Dashboard</span>
-      </nav>
+    </nav>
     <!-- left column - search/search history -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4 border-right border-bottom">
+                <!-- search bar -->
+                <form class="form-inline">
+                    <div class="form-group my-3">
+                        <label for="inputPassword2" class="sr-only">Password</label>
+                        <input type="text" class="form-control" id="validationTooltip03">
+                    </div>
+                    <button type="submit" class="btn btn-primary my-3">Search</button>
+                </form>
+                <!-- search history -->
+                <div class="card mb-3" style="width: 100%;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="validationTooltip03">City</label>
+            <input type="text" class="form-control" id="validationTooltip03" required>
+            <div class="invalid-tooltip">
+                Please provide a valid city.
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </div> -->
 
     <!-- search history -->
-    <div class="card" style="width: 18rem;">
+    <!-- <div class="card" style="width: 18rem;">
         <ul class="list-group list-group-flush">
             <li class="list-group-item">Cras justo odio</li>
             <li class="list-group-item">Dapibus ac facilisis in</li>
             <li class="list-group-item">Vestibulum at eros</li>
         </ul>
-    </div>
+    </div> -->
 
     <!-- data display -->
 
