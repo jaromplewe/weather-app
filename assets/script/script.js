@@ -1,12 +1,37 @@
-
+// GLOBAL VARIABLES
+const apiKey = "97d917361d591ae19840f10060b31839";
+let cityNameForm = $('.cityName');
 // search
-    // use prepend to keep histroy
-        // when user clicks search, value is prepended and displayed in history
-        // if they click on a city in the hitory, set it to form val()
+// use prepend to keep histroy
+// when user clicks search, value is prepended and displayed in history
+// if they click on a city in the hitory, set it to form val()
 
-// ajax
-    // enter cityVal (from above) into the API url as well as the apiKey var
-    // .then run the function to append everything to the page -------- might have to use moment.js
+$('#submitBtn').on('click', function (event) {
+    event.preventDefault();
+
+
+    // create url with city form value
+    let cityName = cityNameForm.val();
+    let queryURL = "api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+
+    // AJAX
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+        // .then run the function to append everything to the page -------- might have to use moment.js
+    }).then(function (response) {
+        console.log(response)
+        // .catch function for any errors that may occur
+    }).catch(function (error) {
+        console.log(error);
+    });
+
+
+})
+
+
+
+
         // main card
             // city and date in an h2 el
             // temperature in a p el
