@@ -1,7 +1,7 @@
 
 // search
-    // use localStorage to keep histroy
-        // when user clicks search, value is stored to localStorage and displayed in history, stores val to a variable cityVal
+    // use prepend to keep histroy
+        // when user clicks search, value is prepended and displayed in history
         // if they click on a city in the hitory, set it to form val()
 
 // ajax
@@ -19,3 +19,5 @@
                 // emoji for weather
                 // Temp
                 // Humidity
+
+// !!!!!don't forget to ignoreDefault for the submit button!!!!
