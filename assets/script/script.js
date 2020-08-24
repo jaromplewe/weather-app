@@ -1,6 +1,7 @@
 // GLOBAL VARIABLES
 const apiKey = "97d917361d591ae19840f10060b31839";
 let cityNameForm = $('.cityName');
+let stateNameForm = $('.stateChoice');
 // search
 // use prepend to keep histroy
 // when user clicks search, value is prepended and displayed in history
@@ -12,17 +13,19 @@ $('#submitBtn').on('click', function (event) {
 
     // create url with city form value
     let cityName = cityNameForm.val();
-    let queryURL = "api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+    let queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+    // "api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey;
+    console.log(queryURL)
 
     // AJAX
     $.ajax({
         url: queryURL,
         method: "GET"
         // .then run the function to append everything to the page -------- might have to use moment.js
-    }).then(function (response) {
+    }).then(function(response) {
         console.log(response)
         // .catch function for any errors that may occur
-    }).catch(function (error) {
+    }).catch(function(error) {
         console.log(error);
     });
 
