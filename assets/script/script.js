@@ -19,10 +19,13 @@ $('#submitBtn').on('click', function (event) {
     event.preventDefault();
 
 
+    
+
+
     // create url with city form value =========== ensure that units are in "imperial"
     let queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName.val() + "&units=imperial&appid=" + apiKey;
 
-    // AJAX
+    // main AJAX
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -68,7 +71,7 @@ $('#submitBtn').on('click', function (event) {
             method: "GET"
         }).then(function(response) {
 
-            // create headers
+            // create HEADER DATES
             // day 1
             let forecastDate = (response.list[5].dt_txt).slice(0, 10);
             forecastHeader[0].textContent = forecastDate;
@@ -85,7 +88,7 @@ $('#submitBtn').on('click', function (event) {
             let forecastDate5 = (response.list[37].dt_txt).slice(0, 10);
             forecastHeader[4].textContent = forecastDate5;
             
-            // create icons
+            // create ICONS
             // day 1
             let iconUrl = "http://openweathermap.org/img/wn/" + response.list[5].weather[0].icon + "@2x.png"
             forecastIcon[0].setAttribute('src', iconUrl);
@@ -102,7 +105,7 @@ $('#submitBtn').on('click', function (event) {
             let iconUrl5 = "http://openweathermap.org/img/wn/" + response.list[37].weather[0].icon + "@2x.png"
             forecastIcon[4].setAttribute('src', iconUrl5);
             
-            // create temp
+            // create TEMPERATURES
             // day 1
             let forecastTempResponse = (response.list[5].main.temp);
             forecastTemp[0].textContent = "Temp: " + forecastTempResponse + " F";
@@ -119,7 +122,7 @@ $('#submitBtn').on('click', function (event) {
             let forecastTempResponse5 = (response.list[37].main.temp);
             forecastTemp[4].textContent = "Temp: " + forecastTempResponse5 + " F";
 
-            // create humidity
+            // create HUMIDITY
             // day 1
             let forecastHumidityResponse = (response.list[5].main.humidity);
             forecastHumid[0].textContent = "Humidity: " + forecastHumidityResponse + "%";
@@ -138,9 +141,7 @@ $('#submitBtn').on('click', function (event) {
 
         }).catch(function(error) {
             console.log(error);
-        });
-        
-                
+        });   
                 
         // .catch function for any errors that may occur
     }).catch(function(error) {
@@ -149,11 +150,3 @@ $('#submitBtn').on('click', function (event) {
 
 
 })
-
-
-
-
-        
-        
-
-// !!!!!don't forget to ignoreDefault for the submit button!!!!
