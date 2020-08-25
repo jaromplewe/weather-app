@@ -3,6 +3,8 @@ const apiKey = "97d917361d591ae19840f10060b31839";
 let cityName = $('.cityName');
 let stateNameForm = $('.stateChoice');
 const currentDate = moment().format("MMM" + " D, " + "YYYY");
+// search history
+let historyList = document.getElementsByClassName('list-group-item');
 // 5-day forecast variables
 let forecastHeader = document.getElementsByClassName('5DayHeader');
 let forecastIcon = document.getElementsByClassName('5DayIcon');
@@ -17,10 +19,12 @@ let forecastHumid = document.getElementsByClassName('5DayHumid');
 
 $('#submitBtn').on('click', function (event) {
     event.preventDefault();
-
-
-    
-
+    if (historyList.length < 11) {
+        $('#listGroup').prepend('<li class="list-group-item">' + cityName.val() + '</li>');
+    } else if (historyList.length >= 11) {
+        $('#listGroup').prepend('<li class="list-group-item">' + cityName.val() + '</li>');
+        historyList[11].classList.add('hide');
+    }
 
     // create url with city form value =========== ensure that units are in "imperial"
     let queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName.val() + "&units=imperial&appid=" + apiKey;
@@ -44,7 +48,7 @@ $('#submitBtn').on('click', function (event) {
         $('#mainHumid').text("Humidity: " + response.main.humidity + "%");
         
         // Wind Speed
-        $('#mainWind').text("Wind: " + response.wind.speed);
+        $('#mainWind').text("Wind: " + response.wind.speed + " MPH");
 
         // UV Index
         // set lat and lon and create UV index URL
@@ -149,4 +153,9 @@ $('#submitBtn').on('click', function (event) {
     });
 
 
+})
+
+// if you click on the search history item, it will search it again
+$('.list-group-item').on('click', function() {
+    console.log(this)
 })
