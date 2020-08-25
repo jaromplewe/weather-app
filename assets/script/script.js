@@ -23,7 +23,7 @@ $('#submitBtn').on('click', function (event) {
         method: "GET"
         // .then run the function to append everything to the page -------- might have to use moment.js
     }).then(function(response) {
-        console.log(response)
+        // console.log(response)
 
         // MAIN CARD
         // city and date in an h2 el
@@ -39,25 +39,42 @@ $('#submitBtn').on('click', function (event) {
         $('#mainWind').text("wind: " + response.wind.speed);
 
         // UV Index
-        // set lat and lon
+        // set lat and lon and create UV index URL
         const lat = response.coord.lat;
         const lon = response.coord.lon;
         let uvUrl = "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon;
+        // GET and append UV index to the main card
         $.ajax({
             url: uvUrl,
             method: "GET"
         }).then(function(response) {
             $('#mainUV').text(response.value);
+        }).catch(function(error) {
+            console.log(error);
+        });
 
-        })
 
-
-        // 5-day forecast
-            // 5 cards with the folowing info:
-                // date header
-                // emoji for weather
-                // Temp
-                // Humidity
+        // 5-DAY FORECAST
+        // create url for 5-day forecast
+        let forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName.val() + "&units=imperial&appid=" + apiKey;
+        $.ajax({
+            url: forecastUrl,
+            method: "GET"
+        }).then(function(response) {
+            console.log(response)
+            // date header
+            let next5DaysArr = [2, 10, 18, 26, 34];
+            for (let i=0; i<next5DaysArr.length; i++) {
+                let dateString = (response.list[i].dt_txt).slice(0, 10);
+                console.log(dateString);
+            }
+            // emoji for weather
+            // Temp
+            // Humidity
+        }).catch(function(error) {
+            console.log(error);
+        });
+        
                 
                 
         // .catch function for any errors that may occur
