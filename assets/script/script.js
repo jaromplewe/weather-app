@@ -35,11 +35,13 @@ $('#submitBtn').on('click', function (event) {
         method: "GET"
         // .then run the function to append everything to the page -------- might have to use moment.js
     }).then(function(response) {
-        // console.log(response)
+        console.log(response)
 
         // MAIN CARD
         // city and date in an h2 el
+        let mainIcon = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
         $('#cityDateDis').text(response.name + " - " + currentDate);
+        $('#mainIcon').attr('src', mainIcon);
         
         // temperature
         $('#mainTemp').text("Temperature: " + response.main.temp + " F");
