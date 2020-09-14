@@ -27,7 +27,7 @@ $('#submitBtn').on('click', function (event) {
     }
 
     // create url with city form value =========== ensure that units are in "imperial"
-    let queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName.val() + "&units=imperial&appid=" + apiKey;
+    let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName.val() + "&units=imperial&appid=" + apiKey;
 
     // main AJAX
     $.ajax({
@@ -39,7 +39,7 @@ $('#submitBtn').on('click', function (event) {
 
         // MAIN CARD
         // city and date in an h2 el
-        let mainIcon = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
+        let mainIcon = "https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
         $('#cityDateDis').text(response.name + " - " + currentDate);
         $('#mainIcon').attr('src', mainIcon);
         
@@ -56,7 +56,7 @@ $('#submitBtn').on('click', function (event) {
         // set lat and lon and create UV index URL
         const lat = response.coord.lat;
         const lon = response.coord.lon;
-        let uvUrl = "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon;
+        let uvUrl = "https://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon;
         // GET and append UV index to the main card
         $.ajax({
             url: uvUrl,
@@ -71,7 +71,7 @@ $('#submitBtn').on('click', function (event) {
 
         // 5-DAY FORECAST
         // create url for 5-day forecast
-        let forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName.val() + "&units=imperial&appid=" + apiKey;
+        let forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName.val() + "&units=imperial&appid=" + apiKey;
         $.ajax({
             url: forecastUrl,
             method: "GET"
@@ -96,19 +96,19 @@ $('#submitBtn').on('click', function (event) {
             
             // create ICONS
             // day 1
-            let iconUrl = "http://openweathermap.org/img/wn/" + response.list[5].weather[0].icon + "@2x.png"
+            let iconUrl = "https://openweathermap.org/img/wn/" + response.list[5].weather[0].icon + "@2x.png"
             forecastIcon[0].setAttribute('src', iconUrl);
             // day 2
-            let iconUrl2 = "http://openweathermap.org/img/wn/" + response.list[13].weather[0].icon + "@2x.png"
+            let iconUrl2 = "https://openweathermap.org/img/wn/" + response.list[13].weather[0].icon + "@2x.png"
             forecastIcon[1].setAttribute('src', iconUrl2);
             // day 3
-            let iconUrl3 = "http://openweathermap.org/img/wn/" + response.list[21].weather[0].icon + "@2x.png"
+            let iconUrl3 = "https://openweathermap.org/img/wn/" + response.list[21].weather[0].icon + "@2x.png"
             forecastIcon[2].setAttribute('src', iconUrl3);
             // day 4
-            let iconUrl4 = "http://openweathermap.org/img/wn/" + response.list[29].weather[0].icon + "@2x.png"
+            let iconUrl4 = "https://openweathermap.org/img/wn/" + response.list[29].weather[0].icon + "@2x.png"
             forecastIcon[3].setAttribute('src', iconUrl4);
             // day 5
-            let iconUrl5 = "http://openweathermap.org/img/wn/" + response.list[37].weather[0].icon + "@2x.png"
+            let iconUrl5 = "https://openweathermap.org/img/wn/" + response.list[37].weather[0].icon + "@2x.png"
             forecastIcon[4].setAttribute('src', iconUrl5);
             
             // create TEMPERATURES
